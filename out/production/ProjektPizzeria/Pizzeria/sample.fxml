@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.Scene?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+<Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+       fx:controller="Pizzeria.Controllers.Controller">
+    <root>
+        <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+                 prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Menu">
+                    <content>
+                        <AnchorPane fx:id="menuAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                    prefWidth="200.0">
+                            <children>
+                                <HBox minHeight="-Infinity" minWidth="-Infinity">
+                                    <children>
+                                        <ScrollPane>
+                                            <content>
+                                                <VBox fx:id="ingredientsContainer" prefHeight="531.0"
+                                                      prefWidth="332.0"/>
+                                            </content>
+                                        </ScrollPane>
+                                        <AnchorPane prefHeight="533.0" prefWidth="337.0">
+                                            <children>
+                                                <Label layoutX="96.0" layoutY="48.0" prefHeight="27.0" prefWidth="148.0"
+                                                       text="Rozmiar Pizzy"/>
+                                                <ChoiceBox fx:id="pizzaSize" layoutX="94.0" layoutY="79.0"
+                                                           prefWidth="150.0" AnchorPane.leftAnchor="94.0"
+                                                           AnchorPane.rightAnchor="93.0"/>
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane prefHeight="533.0" prefWidth="223.0">
+                                            <children>
+                                                <Button fx:id="submitButton" layoutX="47.0" layoutY="458.0"
+                                                        mnemonicParsing="false" onMouseClicked="#addToSummary"
+                                                        prefHeight="51.0" prefWidth="146.0" text="Dodaj do zamówienia"/>
+                                            </children>
+                                        </AnchorPane>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Podsumowanie">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <HBox prefHeight="431.0" prefWidth="900.0">
+                                    <children>
+                                        <VBox maxHeight="1.7976931348623157E308" prefWidth="451.0">
+                                            <children>
+                                                <TextFlow prefHeight="461.0" prefWidth="900.0">
+                                                    <children>
+                                                        <Text fx:id="summaryField" strokeType="OUTSIDE"
+                                                              strokeWidth="0.0" wrappingWidth="58.98307228088379"/>
+                                                    </children>
+                                                </TextFlow>
+                                            </children>
+                                        </VBox>
+                                        <VBox prefHeight="431.0" prefWidth="449.0">
+                                            <children>
+                                                <AnchorPane prefHeight="117.0" prefWidth="449.0">
+                                                    <children>
+                                                        <ChoiceBox fx:id="delivery" layoutX="205.0" layoutY="54.0"
+                                                                   prefWidth="150.0"/>
+                                                        <Label layoutX="86.0" layoutY="58.0" text="Sposób dowozu"/>
+                                                    </children>
+                                                </AnchorPane>
+                                                <AnchorPane fx:id="optionAnchor" prefHeight="317.0" prefWidth="449.0">
+                                                    <children>
+                                                        <Label layoutX="141.0" layoutY="89.0" text="Ulica"/>
+                                                        <Label layoutX="130.0" layoutY="127.0" text="Nr domu"/>
+                                                        <TextField fx:id="street" layoutX="205.0" layoutY="85.0"/>
+                                                        <TextField fx:id="houseNumber" layoutX="205.0" layoutY="123.0"/>
+                                                        <TextField fx:id="apartmentNumber" layoutX="205.0"
+                                                                   layoutY="158.0" promptText="opcjonalne"/>
+                                                        <Label layoutX="114.0" layoutY="162.0" text="Nr mieszkania"/>
+                                                    </children>
+                                                </AnchorPane>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </HBox>
+                                <AnchorPane layoutY="418.0" prefHeight="125.0" prefWidth="901.0"
+                                            AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0"
+                                            AnchorPane.rightAnchor="-1.0">
+                                    <children>
+                                        <Button layoutX="410.0" layoutY="40.0" mnemonicParsing="false"
+                                                onAction="#goToDeliveryMethod" prefHeight="46.0" prefWidth="82.0"
+                                                text="Zamów"/>
+                                        <Label layoutX="53.0" layoutY="54.0" text="Łącznie"/>
+                                        <Label fx:id="price" layoutX="121.0" layoutY="55.0"/>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </root>
+</Scene>

@@ -1,0 +1,3 @@
+Składniki=[Ser, Szynka], Cena=15.0, Rozmiar=30 cm;
+15.0 zł
+KK 12/1
