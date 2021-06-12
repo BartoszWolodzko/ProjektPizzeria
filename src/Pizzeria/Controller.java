@@ -83,14 +83,20 @@ public class Controller implements Initializable {
     }
 
     void configureDeliveryFields() {
+        street.textProperty().addListener((observableValue, s, t1) -> {
+            order.setStreetName(t1);
+        });
+
         houseNumber.textProperty().addListener((observableValue, s, t1) -> {
             if (!t1.matches("\\d*")) {
                 houseNumber.setText(t1.replaceAll("[^\\d]", ""));
+                order.setHomeNumber(houseNumber.getText());
             }
         });
         apartmentNumber.textProperty().addListener((observableValue, s, t1) -> {
             if (!t1.matches("\\d*")) {
                 apartmentNumber.setText(t1.replaceAll("[^\\d]", ""));
+                order.setApartmentName(apartmentNumber.getText());
             }
         });
     }
@@ -151,7 +157,7 @@ public class Controller implements Initializable {
                 new CreateSummary(order.getToString());
                 new AlertFinishedOrder();
             } else {
-                if (!street.getText().equals("") && !houseNumber.getText().equals("")) {    //in normal app verification with street names etc. (in another class)
+                if (!order.getStreetName().equals("") && !order.getHomeNumber().equals("")) {    //in normal app verification with street names etc. (in another class)
                     new CreateSummary(order.getToString());
                     new AlertFinishedOrder();
                 }
