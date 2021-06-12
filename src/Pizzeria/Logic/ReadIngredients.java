@@ -1,5 +1,7 @@
 package Pizzeria.Logic;
 
+import Pizzeria.AlertFileErr;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -10,9 +12,11 @@ public class ReadIngredients {
     List<String> ingredients = new ArrayList<>();
     List<String> price = new ArrayList<>();
 
+
     public ReadIngredients() {
         try {
-            File file = new File("src\\Pizzeria\\Files\\Ingredients.txt");
+            String path = "src\\Pizzeria\\Files\\Ingredients.txt";
+            File file = new File(path);
             Scanner myReader = new Scanner(file);
             while (myReader.hasNextLine()) {
                 String[] data = myReader.nextLine().split(" ");
@@ -21,8 +25,7 @@ public class ReadIngredients {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            new AlertFileErr(e.getMessage());
         }
     }
 

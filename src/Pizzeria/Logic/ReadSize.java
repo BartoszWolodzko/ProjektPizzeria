@@ -1,5 +1,7 @@
 package Pizzeria.Logic;
 
+import Pizzeria.AlertFileErr;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -19,8 +21,7 @@ public class ReadSize {
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            new AlertFileErr(e.getMessage());
         }
     }
 

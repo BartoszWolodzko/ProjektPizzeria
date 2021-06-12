@@ -4,7 +4,6 @@ module ProjektPizzeria {
     requires javafx.controls;
     requires javafx.fxml;
     opens Pizzeria;
-    exports Pizzeria.Controllers;
-    opens Pizzeria.Controllers;
     opens Pizzeria.Logic;
+    exports Pizzeria;
 }

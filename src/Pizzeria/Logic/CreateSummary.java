@@ -1,5 +1,7 @@
 package Pizzeria.Logic;
 
+import Pizzeria.AlertFileErr;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +10,10 @@ import java.time.format.DateTimeFormatter;
 
 public class CreateSummary {
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
+
+    public CreateSummary(String totalPrice) {
+        create(totalPrice);
+    }
 
     public CreateSummary(StringBuilder textToPrintInSummary, String totalPrice) {
         create(textToPrintInSummary.toString()+totalPrice);
@@ -35,8 +41,7 @@ public class CreateSummary {
             fileWriter.close();
 
         }catch (IOException e){
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            new AlertFileErr(e.getMessage());
         }
     }
 }
