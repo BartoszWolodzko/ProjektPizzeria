@@ -1,14 +1,12 @@
 package Pizzeria;
 
-import Pizzeria.Logic.CreatePizza;
-import Pizzeria.Logic.CreateSummary;
-import Pizzeria.Logic.ReadIngredients;
-import Pizzeria.Logic.ReadSize;
-import javafx.beans.InvalidationListener;
+import Pizzeria.Logic.*;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -54,7 +52,6 @@ public class Controller implements Initializable {
     private ChoiceBox<String> delivery;
 
     private final List<CreatePizza> pizzas = new ArrayList<>();
-    private StringBuilder textToPrintInSummary;
     private final ReadIngredients readIngredients = new ReadIngredients();
     private final ReadSize readSize = new ReadSize();
     private final ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
@@ -62,8 +59,6 @@ public class Controller implements Initializable {
     private final IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
     private final int minNumSelected = 2;
     private boolean isSizeChosen = false;
-
-    //TESTYYYY
     private Order order = new Order();
 
     @Override
@@ -83,14 +78,9 @@ public class Controller implements Initializable {
     }
 
     void configureDeliveryFields() {
-        street.textProperty().addListener((observableValue, s, t1) -> {
-            order.setStreetName(t1);
-        });
-
         houseNumber.textProperty().addListener((observableValue, s, t1) -> {
             if (!t1.matches("\\d*")) {
                 houseNumber.setText(t1.replaceAll("[^\\d]", ""));
-                order.setHomeNumber(houseNumber.getText());
             }
         });
         apartmentNumber.textProperty().addListener((observableValue, s, t1) -> {
@@ -152,6 +142,9 @@ public class Controller implements Initializable {
 
     @FXML
     void goToDeliveryMethod() {
+        order.setStreetName(street.getText());
+        order.setHomeNumber(houseNumber.getText());
+        order.setApartmentName(apartmentNumber.getText());
         if (pizzas.size() >= 1) {
             if (delivery.getValue().contains("Odbiór")) {
                 new CreateSummary(order.getToString());
@@ -186,7 +179,7 @@ public class Controller implements Initializable {
         }
 
         pizzas.add(new CreatePizza(ingredients, price_calculated * Integer.parseInt(pizzaSize.getValue().split(" ")[0])/10, pizzaSize.getValue()));
-        textToPrintInSummary = new StringBuilder();
+        StringBuilder textToPrintInSummary = new StringBuilder();
         for (var element:pizzas) {
             textToPrintInSummary.append(element).append(";").append("\n");
         }

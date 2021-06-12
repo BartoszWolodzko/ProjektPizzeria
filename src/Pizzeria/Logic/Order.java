@@ -1,10 +1,8 @@
-package Pizzeria;
-
-import Pizzeria.Logic.CreatePizza;
+package Pizzeria.Logic;
 
 import java.util.List;
 
-public class Order extends Addres{
+public class Order extends Addres {
     private List<CreatePizza> pizzas;
     private double price;
 
@@ -37,7 +35,7 @@ public class Order extends Addres{
     public String getToString() {
         return "Order{" +
                 "pizzas=" + pizzas +
-                ", price=" + price +
+                ", price=" + price +" \n"+
                 super.getToString()+
                 "}";
     }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CreatePizza {
-    private List<String> ingredients = new ArrayList<>();
+    private final List<String> ingredients;
     private final double price;
     private final String size;
 

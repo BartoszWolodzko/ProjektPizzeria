@@ -6,4 +6,5 @@ module ProjektPizzeria {
     opens Pizzeria;
     opens Pizzeria.Logic;
     exports Pizzeria;
+    exports Pizzeria.Logic;
 }

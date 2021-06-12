@@ -9,23 +9,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CreateSummary {
-    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH-mm-ss");
 
-    public CreateSummary(String totalPrice) {
-        create(totalPrice);
-    }
-
-    public CreateSummary(StringBuilder textToPrintInSummary, String totalPrice) {
-        create(textToPrintInSummary.toString()+totalPrice);
-    }
-
-
-    public CreateSummary(StringBuilder textToPrintInSummary, String totalPrice, String street, String homeNumber, String apartmentNumber) {
-        if (apartmentNumber.equals("")){
-            create(textToPrintInSummary.toString()+totalPrice+"\n"+street+" "+homeNumber);
-        }else {
-            create(textToPrintInSummary.toString()+totalPrice+"\n"+street+" "+homeNumber+"/"+apartmentNumber);
-        }
+    public CreateSummary(String text) {
+        create(text);
     }
 
     private void create(String text){

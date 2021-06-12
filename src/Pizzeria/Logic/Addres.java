@@ -1,4 +1,4 @@
-package Pizzeria;
+package Pizzeria.Logic;
 
 public class Addres {
     private String streetName;
