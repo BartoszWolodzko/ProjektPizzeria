@@ -1,0 +1,2 @@
+Order{pizzas=[Składniki=[Kapary, Bekon, Ser, Szynka], Cena=78.0, Rozmiar=60 cm], price=78.0 
+Addres{streetName='Kuytasiarzy', homeNumber='69', apartmentName='1'}}

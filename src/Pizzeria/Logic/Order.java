@@ -10,12 +10,6 @@ public class Order extends Addres {
 
     }
 
-    public Order(String streetName, String homeNumber, String apartmentName, List<CreatePizza> pizzas, double price) {
-        super(streetName, homeNumber, apartmentName);
-        this.pizzas = pizzas;
-        this.price=price;
-    }
-
     public List<CreatePizza> getPizzas() {
         return pizzas;
     }

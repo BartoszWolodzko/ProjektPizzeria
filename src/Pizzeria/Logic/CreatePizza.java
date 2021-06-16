@@ -1,6 +1,5 @@
 package Pizzeria.Logic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CreatePizza {

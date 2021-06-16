@@ -5,8 +5,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableSet;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -150,7 +148,7 @@ public class Controller implements Initializable {
                 new CreateSummary(order.getToString());
                 new AlertFinishedOrder();
             } else {
-                if (!order.getStreetName().equals("") && !order.getHomeNumber().equals("")) {    //in normal app verification with street names etc. (in another class)
+                if (!order.getStreetName().equals("") && !order.getHomeNumber().equals("")) {
                     new CreateSummary(order.getToString());
                     new AlertFinishedOrder();
                 }
