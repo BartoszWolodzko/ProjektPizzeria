@@ -57,7 +57,7 @@ public class Controller implements Initializable {
     private final IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
     private final int minNumSelected = 2;
     private boolean isSizeChosen = false;
-    private Order order = new Order();
+    private final Order order = new Order();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -70,9 +70,9 @@ public class Controller implements Initializable {
     }
 
     void configureDeliveryOptions() {
-        delivery.getItems().add("Dostawa");
-        delivery.getItems().add("Odbiór");
-        delivery.setOnAction((event) -> optionAnchor.setDisable(!delivery.getValue().contains("Dostawa")));
+        delivery.getItems().add(DeliveryMethods.PICK_UP.getValue());
+        delivery.getItems().add(DeliveryMethods.COLLECT.getValue());
+        delivery.setOnAction((event) -> optionAnchor.setDisable(!delivery.getValue().contains(DeliveryMethods.PICK_UP.getValue())));
     }
 
     void configureDeliveryFields() {
