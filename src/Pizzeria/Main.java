@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Scene root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("sample.fxml")));
+        Scene root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Windows/sample.fxml")));
         stage.setScene(root);
         stage.setTitle("Bardzo dobra Pizza");
         stage.show();

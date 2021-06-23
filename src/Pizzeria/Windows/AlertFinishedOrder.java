@@ -1,4 +1,4 @@
-package Pizzeria;
+package Pizzeria.Windows;
 
 import javafx.scene.control.Alert;
 

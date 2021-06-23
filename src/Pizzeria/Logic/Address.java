@@ -1,19 +1,11 @@
 package Pizzeria.Logic;
 
-public class Addres {
+public class Address {
     private String streetName;
     private String homeNumber;
     private String apartmentName;
 
-    public Addres(){
-
-    }
-
-    public Addres(String streetName, String homeNumber, String apartmentName) {
-        this.streetName = streetName;
-        this.homeNumber = homeNumber;
-        this.apartmentName = apartmentName;
-    }
+    public Address(){}
 
     public String getStreetName() {
         return streetName;
@@ -40,7 +32,7 @@ public class Addres {
     }
 
     public String getToString() {
-        return  "Addres{" +
+        return "Address{" +
                 "streetName='" + streetName + '\'' +
                 ", homeNumber='" + homeNumber + '\'' +
                 ", apartmentName='" + apartmentName + '\'' +

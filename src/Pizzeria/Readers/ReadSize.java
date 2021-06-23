@@ -1,6 +1,6 @@
-package Pizzeria.Logic;
+package Pizzeria.Readers;
 
-import Pizzeria.AlertFileErr;
+import Pizzeria.Windows.AlertFileErr;
 
 import java.io.File;
 import java.io.FileNotFoundException;

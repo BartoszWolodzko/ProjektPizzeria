@@ -2,7 +2,7 @@ package Pizzeria.Logic;
 
 import java.util.List;
 
-public class Order extends Addres {
+public class Order extends Address {
     private List<CreatePizza> pizzas;
     private double price;
 

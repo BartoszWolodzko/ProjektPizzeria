@@ -7,4 +7,10 @@ module ProjektPizzeria {
     opens Pizzeria.Logic;
     exports Pizzeria;
     exports Pizzeria.Logic;
+    exports Pizzeria.Readers;
+    opens Pizzeria.Readers;
+    exports Pizzeria.Writers;
+    opens Pizzeria.Writers;
+    exports Pizzeria.Windows;
+    opens Pizzeria.Windows;
 }

@@ -1,6 +1,9 @@
-package Pizzeria;
+package Pizzeria.Windows;
 
 import Pizzeria.Logic.*;
+import Pizzeria.Readers.ReadIngredients;
+import Pizzeria.Readers.ReadSize;
+import Pizzeria.Writers.CreateSummary;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.IntegerBinding;
 import javafx.collections.FXCollections;
@@ -144,13 +147,15 @@ public class Controller implements Initializable {
         order.setHomeNumber(houseNumber.getText());
         order.setApartmentName(apartmentNumber.getText());
         if (pizzas.size() >= 1) {
-            if (delivery.getValue().contains("Odbiór")) {
+            if (delivery.getValue().contains(DeliveryMethods.COLLECT.getValue())) {
                 new CreateSummary(order.getToString());
                 new AlertFinishedOrder();
             } else {
                 if (!order.getStreetName().equals("") && !order.getHomeNumber().equals("")) {
                     new CreateSummary(order.getToString());
                     new AlertFinishedOrder();
+                }else {
+                    new AlertOrderNotComplete();
                 }
             }
         }
@@ -176,7 +181,9 @@ public class Controller implements Initializable {
             price_calculated = price_calculated + Double.parseDouble(splittedValue[1]);
         }
 
-        pizzas.add(new CreatePizza(ingredients, price_calculated * Integer.parseInt(pizzaSize.getValue().split(" ")[0])/10, pizzaSize.getValue()));
+        int multiplierOfPrice = Integer.parseInt(pizzaSize.getValue().split(" ")[0])/10; // depends on Pizzerias policy (in here size/10) could be taken from enum next value
+
+        pizzas.add(new CreatePizza(ingredients, price_calculated * multiplierOfPrice, pizzaSize.getValue()));
         StringBuilder textToPrintInSummary = new StringBuilder();
         for (var element:pizzas) {
             textToPrintInSummary.append(element).append(";").append("\n");

@@ -1,0 +1,2 @@
+Order{pizzas=[Składniki=[Kapary, Bekon], Cena=24.0, Rozmiar=30 cm], price=24.0 
+Address{streetName='', homeNumber='', apartmentName=''}}

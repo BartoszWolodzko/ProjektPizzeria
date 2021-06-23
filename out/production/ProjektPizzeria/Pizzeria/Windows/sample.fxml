@@ -5,7 +5,7 @@
 <?import javafx.scene.Scene?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.text.TextFlow?>
-<Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pizzeria.Controller">
+<Scene xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pizzeria.Windows.Controller">
     <root>
         <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
