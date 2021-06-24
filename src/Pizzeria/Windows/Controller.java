@@ -79,15 +79,19 @@ public class Controller implements Initializable {
     }
 
     void configureDeliveryFields() {
+        street.textProperty().addListener((observableValue, oldValue, newValue) -> order.setStreetName(street.getText()));
+
         houseNumber.textProperty().addListener((observableValue, s, t1) -> {
+            order.setHomeNumber(houseNumber.getText());
             if (!t1.matches("\\d*")) {
                 houseNumber.setText(t1.replaceAll("[^\\d]", ""));
             }
         });
+
         apartmentNumber.textProperty().addListener((observableValue, s, t1) -> {
+            order.setApartmentName(apartmentNumber.getText());
             if (!t1.matches("\\d*")) {
                 apartmentNumber.setText(t1.replaceAll("[^\\d]", ""));
-                order.setApartmentName(apartmentNumber.getText());
             }
         });
     }
@@ -143,9 +147,6 @@ public class Controller implements Initializable {
 
     @FXML
     void goToDeliveryMethod() {
-        order.setStreetName(street.getText());
-        order.setHomeNumber(houseNumber.getText());
-        order.setApartmentName(apartmentNumber.getText());
         if (pizzas.size() >= 1) {
             if (delivery.getValue().contains(DeliveryMethods.COLLECT.getValue())) {
                 new CreateSummary(order.getToString());
