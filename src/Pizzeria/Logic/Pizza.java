@@ -2,12 +2,13 @@ package Pizzeria.Logic;
 
 import java.util.List;
 
-public class CreatePizza {
+public class Pizza {
     private final List<String> ingredients;
     private final double price;
     private final String size;
 
-    public CreatePizza(List<String> ingredients, double price, String size) {
+
+    public Pizza(List<String> ingredients, double price, String size) {
         this.ingredients = ingredients;
         this.price = price;
         this.size = size;

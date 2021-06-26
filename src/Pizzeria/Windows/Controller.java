@@ -16,8 +16,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -52,7 +50,6 @@ public class Controller implements Initializable {
     @FXML
     private ChoiceBox<String> delivery;
 
-    private final List<CreatePizza> pizzas = new ArrayList<>();
     private final ReadIngredients readIngredients = new ReadIngredients();
     private final ReadSize readSize = new ReadSize();
     private final ObservableSet<CheckBox> selectedCheckBoxes = FXCollections.observableSet();
@@ -60,7 +57,7 @@ public class Controller implements Initializable {
     private final IntegerBinding numCheckBoxesSelected = Bindings.size(selectedCheckBoxes);
     private final int minNumSelected = 2;
     private boolean isSizeChosen = false;
-    private final Order order = new Order();
+    private Order order = new Order();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -147,7 +144,7 @@ public class Controller implements Initializable {
 
     @FXML
     void goToDeliveryMethod() {
-        if (pizzas.size() >= 1) {
+        if (order.getPizzas().size() >= 1) {
             if (delivery.getValue().contains(DeliveryMethods.COLLECT.getValue())) {
                 new CreateSummary(order.getToString());
                 new AlertFinishedOrder();
@@ -163,35 +160,19 @@ public class Controller implements Initializable {
     }
 
     void setPriceLabel() {
-        double sumPrice = 0;
-        for (var element : pizzas
-        ) {
-            sumPrice += element.getPrice();
-        }
-        price.setText(sumPrice + " zł");
-        order.setPrice(sumPrice);
+        price.setText(order.getPrice() + " zł");
     }
 
     @FXML
     void addToSummary() {
-        double price_calculated = 0;
-        List<String> ingredients = new ArrayList<>();
-        for (CheckBox element : selectedCheckBoxes) {
-            String[] splittedValue = element.getText().split(" ");
-            ingredients.add(splittedValue[0]);
-            price_calculated = price_calculated + Double.parseDouble(splittedValue[1]);
-        }
-
-        int multiplierOfPrice = Integer.parseInt(pizzaSize.getValue().split(" ")[0])/10; // depends on Pizzerias policy (in here size/10) could be taken from enum next value
-
-        pizzas.add(new CreatePizza(ingredients, price_calculated * multiplierOfPrice, pizzaSize.getValue()));
-        StringBuilder textToPrintInSummary = new StringBuilder();
-        for (var element:pizzas) {
-            textToPrintInSummary.append(element).append(";").append("\n");
-        }
-        order.setPizzas(pizzas);
-        summaryField.setText(String.valueOf(textToPrintInSummary));
+        order.addPizza(selectedCheckBoxes,pizzaSize.getValue());
+        summaryField.setText(String.valueOf(order.pizzasToPrint()));
         setPriceLabel();
+    }
+
+    @FXML
+    void executeOrder66() {
+        order = new Order();
     }
 }
 
